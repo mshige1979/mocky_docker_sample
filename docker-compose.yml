@@ -1,6 +1,25 @@
 version: "3"
 
 services:
+  # nginx
+  nginx:
+    # コンテナ名
+    container_name: nginx
+    # image
+    image: nginx:alpine
+    # スタブサーバー起動後に動く
+    depends_on:
+      - mocky
+      - staticsite
+    # コンテナに入るようにできる
+    tty: true
+    # ポート
+    ports:
+      - "80:80"
+    # ボリューム（マウント）
+    volumes:
+      - ./dockers/nginx/conf.d:/etc/nginx/conf.d
+
   # スタブサーバ用
   mocky:
     # コンテナ名
@@ -19,3 +38,18 @@ services:
     working_dir: /usr/src/app
     # 実行コマンド
     entrypoint: npm start
+
+  # 静的サーバ用
+  staticsite:
+    # コンテナ名
+    container_name: staticsite
+    # image
+    image: panubo/staticsite
+    # コンテナに入るようにできる
+    tty: true
+    # ポート
+    ports:
+      - "8000:80"
+    # ボリューム
+    volumes:
+      - "./dockers/staticsite/html:/var/www/html"
