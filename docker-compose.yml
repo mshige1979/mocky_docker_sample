@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  # スタブサーバ用
+  mocky:
+    # コンテナ名
+    container_name: mocky
+    # Dockerfile場所
+    build: ./dockers/mocky
+    # コンテナに入るようにできる
+    tty: true
+    # ボリューム
+    volumes:
+      - "./dockers/mocky/app:/usr/src/app"
+    # ポート
+    ports:
+      - "4321:4321"
+    # 作業ディレクトリ
+    working_dir: /usr/src/app
+    # 実行コマンド
+    entrypoint: npm start

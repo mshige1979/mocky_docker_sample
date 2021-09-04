@@ -1,0 +1,22 @@
+{
+  "name": "mocky",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --exec node --experimental-modules index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocky": "^0.1.11",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "canvas": "^2.6.1",
+    "html-pdf": "^2.2.0"
+  }
+}
